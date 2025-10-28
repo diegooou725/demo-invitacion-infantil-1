@@ -17,7 +17,7 @@
         body {
             margin: 0;
             padding-bottom: 150px;
-            /* FIX: Evita desbordamiento horizontal en móvil, pero no evita que los elementos dentro desborden */
+            /* FIX: Evita desbordamiento horizontal en móvil */
             overflow-x: hidden; 
             
             background-color: #0d1b3e; 
@@ -98,7 +98,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%); 
-            /* FIX: Se añade max-width: 100vw para que la imagen nunca exceda el ancho de la ventana del navegador */
+            /* FIX: Garantiza que no exceda el ancho de la pantalla */
             max-width: 100vw; 
         }
 
@@ -588,13 +588,20 @@
         /* --- MEDIA QUERY PARA MÓVILES (Adaptación al 100% y Minuto a Minuto) --- */
         @media (max-width: 767px) {
             
+            /* FIX: Desactivar Parallax en móvil para rendimiento y estabilidad */
+            .contador-seccion,
+            .galeria-seccion {
+                background-attachment: scroll !important;
+            }
+
             .hero-circle-container {
                 width: 250px;
                 height: 250px;
             }
             .hero-center-image {
-                /* Se mantiene width: 300px aquí, pero el max-width: 100vw; general previene el desbordamiento. */
-                width: 300px; 
+                /* FIX: Ajuste más agresivo para evitar desbordamiento en móviles */
+                width: 100%; 
+                max-width: 300px; /* Se mantiene el límite para que no crezca demasiado */
             }
 
             .hero h1 { font-size: 4rem; }
@@ -647,7 +654,7 @@
     <section class="hero">
         <div class="hero-circle-container">
             <div class="hero-image"></div>
-            <img src="todos.png" alt="Todos los personajes" class="hero-center-image">
+            <img src="todos.png" alt="Todos los personajes" class="hero-center-image" width="380" height="380">
         </div>
         <div class="hero-content">
             <h1>ARIANNA</h1>
@@ -658,7 +665,7 @@
             </p>
             <p class="subtitulo">¡Los espero!</p>
 
-            <img src="alegriatristeza.png" alt="Alegría y Tristeza" class="hero-decorator-img">
+            <img src="alegriatristeza.png" alt="Alegría y Tristeza" class="hero-decorator-img" width="300" height="300">
         </div>
     </section>
 
@@ -698,7 +705,7 @@
     </section>
 
     <section class="decorator-img">
-        <img src="bing.png" alt="Bing Bong">
+        <img src="bing.png" alt="Bing Bong" loading="lazy" width="350" height="350">
     </section>
 
     <section class="galeria-seccion">
@@ -706,15 +713,15 @@
         <div class="swiper">
             <div class="swiper-wrapper">
 
-                <div class="swiper-slide"><img src="niña1.png" alt="Niña 1"></div>
-                <div class="swiper-slide"><img src="niña2.png" alt="Niña 2"></div>
-                <div class="swiper-slide"><img src="niña3.png" alt="Niña 3"></div>
-                <div class="swiper-slide"><img src="niña1.png" alt="Niña 1"></div>
-                <div class="swiper-slide"><img src="niña2.png" alt="Niña 2"></div>
-                <div class="swiper-slide"><img src="niña3.png" alt="Niña 3"></div>
-                <div class="swiper-slide"><img src="niña1.png" alt="Niña 1"></div>
-                <div class="swiper-slide"><img src="niña2.png" alt="Niña 2"></div>
-                <div class="swiper-slide"><img src="niña3.png" alt="Niña 3"></div>
+                <div class="swiper-slide"><img src="niña1.png" alt="Niña 1" loading="lazy" width="280" height="380"></div>
+                <div class="swiper-slide"><img src="niña2.png" alt="Niña 2" loading="lazy" width="280" height="380"></div>
+                <div class="swiper-slide"><img src="niña3.png" alt="Niña 3" loading="lazy" width="280" height="380"></div>
+                <div class="swiper-slide"><img src="niña1.png" alt="Niña 1" loading="lazy" width="280" height="380"></div>
+                <div class="swiper-slide"><img src="niña2.png" alt="Niña 2" loading="lazy" width="280" height="380"></div>
+                <div class="swiper-slide"><img src="niña3.png" alt="Niña 3" loading="lazy" width="280" height="380"></div>
+                <div class="swiper-slide"><img src="niña1.png" alt="Niña 1" loading="lazy" width="280" height="380"></div>
+                <div class="swiper-slide"><img src="niña2.png" alt="Niña 2" loading="lazy" width="280" height="380"></div>
+                <div class="swiper-slide"><img src="niña3.png" alt="Niña 3" loading="lazy" width="280" height="380"></div>
                 
             </div>
             <div class="swiper-pagination"></div>
@@ -796,7 +803,7 @@
     <div id="sticky-footer">
         <span class="footer-text">
             <a href="https://wa.me/524274270566?text=Quisiera%20mas%20informacion%20sobre%20las%20invitaciones%20digitales" target="_blank" class="logo-link">
-                 <img src="DigitalCore-blanco.png" alt="Logo de Digital Core" class="footer-logo">
+                 <img src="DigitalCore-blanco.png" alt="Logo de Digital Core" class="footer-logo" loading="lazy" width="100" height="35">
             </a>
             Invitación de prueba creada por Digital Core. Cotiza y solicita tu diseño aqui.
         </span>
