@@ -23,6 +23,7 @@
         html {
             /* Asegura que no haya desbordamiento horizontal */
             overflow-x: hidden;
+            scroll-behavior: smooth; /* Para que el scroll sea suave con la animación */
         }
 
         /* --- ESTILOS GENERALES --- */
@@ -256,22 +257,30 @@
             font-weight: 400; 
             font-size: 1.1rem;
             letter-spacing: 1px;
+            background-color: #d9534f; /* Color del timeline para coherencia */
+            color: #fff;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
         }
 
         .mapa-boton:hover {
-            background-color: #1a3575;
+            background-color: #c9302c; /* Tono más oscuro al pasar el ratón */
         }
-
+        
+        /* --- Sección Decorativa Bing Bong (RESTAURADA) --- */
         .decorator-img {
-            padding: 0;
-            line-height: 0;
+            padding: 0; /* Sin padding vertical */
+            line-height: 0; /* Evita espacio extra bajo la imagen */
+            text-align: center; /* Centra la imagen */
+            background-color: transparent !important; /* Asegura transparencia */
         }
 
         .decorator-img img {
             max-width: 350px;
             width: 100%;
             height: auto;
-            margin-top: 30px;
+            margin-top: 30px; /* Espacio superior */
+            margin-bottom: 30px; /* Espacio inferior */
         }
 
 
@@ -603,6 +612,28 @@
              margin-right: 0;
         }
 
+        /* --- NUEVO: Animación de Scroll --- */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            will-change: opacity, transform; /* Ayuda al navegador a optimizar la animación */
+        }
+        
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Escalonar la animación de los elementos del hero */
+        .hero-circle-container.animate-on-scroll {
+            transition-delay: 0.1s;
+        }
+        .hero-content.animate-on-scroll {
+            transition-delay: 0.3s;
+        }
+
+
         /* --- MEDIA QUERY PARA MÓVILES (Adaptación Minuto a Minuto) --- */
         @media (max-width: 767px) {
             
@@ -671,12 +702,12 @@
 <body>
 
     <section class="hero">
-        <div class="hero-circle-container">
+        <div class="hero-circle-container animate-on-scroll">
             <div class="hero-image">
                 </div>
             <img src="todos.png" alt="Todos los personajes" class="hero-center-image">
         </div>
-        <div classs="hero-content">
+        <div class="hero-content animate-on-scroll">
             <h1>ARIANNA</h1>
             <p class="subtitulo">
                 Espero que todos estén preparados y con muchas ganas de celebrar,
@@ -689,7 +720,7 @@
         </div>
     </section>
 
-    <section class="contador-seccion">
+    <section class="contador-seccion animate-on-scroll">
         <h2>YA SÓLO FALTA</h2>
         <div class="countdown">
             <div class="tiempo-caja">
@@ -711,7 +742,7 @@
         </div>
     </section>
 
-    <section class="evento-seccion">
+    <section class="evento-seccion animate-on-scroll">
         <h2>EVENTO</h2>
         <div class="evento-detalle">
             <h3>Lugar del evento</h3>
@@ -724,11 +755,11 @@
         </div>
     </section>
 
-    <section class="decorator-img">
+    <section class="decorator-img animate-on-scroll">
         <img src="bing.png" alt="Bing Bong">
     </section>
 
-    <section class="galeria-seccion">
+    <section class="galeria-seccion animate-on-scroll">
         <h2>MOMENTOS</h2>
         <div class="swiper">
             <div class="swiper-wrapper">
@@ -748,7 +779,7 @@
         </div>
     </section>
 
-    <section class="itinerario-seccion" style="padding-top: 0;">
+    <section class="itinerario-seccion animate-on-scroll" style="padding-top: 0;">
         <h2 style="padding-top: 50px;">MINUTO A MINUTO</h2>
         <ul class="timeline">
             <li>
@@ -802,7 +833,7 @@
         </ul>
     </section>
 
-    <section class="rsvp-seccion">
+    <section class="rsvp-seccion animate-on-scroll">
         <h2>CONFIRMAR ASISTENCIA</h2>
 
         <h3>Invitación para:</h3>
@@ -820,8 +851,7 @@
     </section>
 
     
-    <div id="sticky-footer">
-        <span class="footer-text">
+    <div id="sticky-footer"> <span class="footer-text">
             <a href="https://wa.me/524274270566?text=Quisiera%20mas%20informacion%20sobre%20las%20invitaciones%20digitales" target="_blank" class="logo-link">
                  <img src="DigitalCore-blanco.png" alt="Logo de Digital Core" class="footer-logo">
             </a>
@@ -896,6 +926,32 @@
                 },
             });
         })();
+
+        // --- NUEVO: SCRIPT PARA ANIMACIÓN DE SCROLL ---
+        (function() {
+            const targets = document.querySelectorAll('.animate-on-scroll');
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        // Opcional: Desconectar el observador para que la animación solo ocurra una vez
+                        // observer.unobserve(entry.target); 
+                    } else {
+                        // Opcional: Quitar la clase si quieres que se animen cada vez que entran/salen
+                        // entry.target.classList.remove('is-visible');
+                    }
+                });
+            }, {
+                rootMargin: '0px',
+                threshold: 0.1 // Qué porcentaje del elemento debe estar visible (0.1 = 10%)
+            });
+
+            targets.forEach(target => {
+                observer.observe(target);
+            });
+        })();
+
     </script>
     </body>
 </html>
