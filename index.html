@@ -42,16 +42,15 @@
             box-shadow: 0 0 20px rgba(0,0,0,0.3);
         }
 
-        /* FIX: Aseguramos que el contenido tenga fuente Bangers para los encabezados */
-        .timeline-panel h3, .boton-enviar {
-             font-family: 'Bangers', cursive;
-        }
-
         /* Tipografía del texto normal (legible) */
         .subtitulo, .timeline-panel p, .evento-detalle p, 
         .tiempo-caja span:last-child, .footer-text {
              font-family: 'Poppins', sans-serif;
              font-weight: 400;
+        }
+        /* Tipografía de los encabezados (fuerte) */
+        .timeline-panel h3, .boton-enviar {
+             font-family: 'Bangers', cursive;
         }
 
         /* --- 1. Sección de Portada (Hero) --- */
@@ -63,7 +62,6 @@
             align-items: center;
             justify-content: center;
             min-height: 500px;
-             /* FIX: Fondo completamente transparente */
             background-color: transparent !important;
         }
 
@@ -75,7 +73,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: transparent !important; /* FIX */
+            background-color: transparent !important;
         }
 
         .hero-image {
@@ -85,8 +83,9 @@
             background-image: url('niña.png');
             background-size: cover;
             background-position: center;
-            /* FIX: Aseguramos que no haya color de fondo que genere el filtro */
+            /* FIX CRÍTICO: Aseguramos que no haya filtro ni color de fondo */
             background-color: transparent !important; 
+            filter: none !important; 
             border: 6px solid #fff;
             position: relative;
             z-index: 1; 
@@ -328,7 +327,7 @@
         }
 
 
-        /* --- 5. SECCIÓN MINUTO A MINUTO --- */
+        /* --- 5. SECCIÓN MINUTO A MINUTO (ADAPTACIÓN MÓVIL CORRECTA) --- */
         .itinerario-seccion {
             padding: 60px 25px;
             margin-bottom: 120px;
@@ -341,6 +340,7 @@
             margin-bottom: 50px;
         }
         
+        /* Contenedor principal de la línea de tiempo */
         .timeline {
             padding: 30px 0 30px;
             max-width: 850px;
@@ -353,6 +353,7 @@
             clear: both;
         }
 
+        /* Línea central (desktop) */
         .timeline:before {
             content: '';
             position: absolute;
@@ -371,6 +372,7 @@
             list-style: none;
         }
 
+        /* Círculo de la hora (desktop) */
         .timeline > li .timeline-badge {
             width: 110px;
             height: 110px;
@@ -388,6 +390,7 @@
             color: #fff;
         }
 
+        /* Panel de contenido (desktop) */
         .timeline > li .timeline-panel {
             width: 40%;
             float: left;
@@ -403,6 +406,7 @@
             float: right;
         }
         
+        /* Flechas de la tarjeta (desktop) */
         .timeline > li .timeline-panel:before {
             position: absolute;
             top: 30px; 
@@ -525,7 +529,6 @@
         }
 
         .footer-text {
-            /* FIX: Fuente, tamaño y peso exacto de la referencia */
             font-family: 'Raleway', sans-serif; 
             font-weight: 300; 
             font-size: 0.75rem; 
@@ -540,7 +543,6 @@
         }
         
         .whatsapp-button-footer {
-            /* FIX: Fuente, tamaño y padding exacto de la referencia */
             font-family: 'Raleway', sans-serif; 
             font-weight: 400; 
             font-size: 0.8rem;
@@ -560,10 +562,10 @@
         }
 
         .whatsapp-button-footer svg {
-             width: 14px; /* Tamaño del SVG de referencia */
+             width: 14px; 
              height: 14px;
              fill: var(--blanco);
-             margin-right: 6px; /* Margen del SVG de referencia */
+             margin-right: 6px; 
         }
         
         .whatsapp-button-footer:hover {
@@ -572,7 +574,7 @@
         }
         
         .footer-logo {
-             height: 35px; /* Altura solicitada de 35px */
+             height: 35px; 
              width: auto;
              vertical-align: middle;
              display: block;
@@ -583,7 +585,61 @@
              display: inline-block;
              margin-right: 0;
         }
-        
+
+        /* --- MEDIA QUERY PARA MÓVILES (Adaptación al 100% y Minuto a Minuto) --- */
+        @media (max-width: 767px) {
+            
+            .hero-circle-container {
+                width: 250px;
+                height: 250px;
+            }
+            .hero-center-image {
+                width: 300px; 
+            }
+
+            .hero h1 { font-size: 4rem; }
+
+            /* Línea de tiempo móvil: vertical y todo a la derecha */
+            .timeline:before {
+                left: 20px; /* Línea movida a la izquierda */
+            }
+
+            .timeline > li .timeline-badge {
+                left: 20px;
+                margin-left: -50px;
+                width: 100px;
+                height: 100px;
+                line-height: 100px;
+                top: 5px;
+            }
+            
+            /* Alinear todas las tarjetas a la derecha de la línea */
+            .timeline > li .timeline-panel,
+            .timeline > li.timeline-inverted > .timeline-panel {
+                width: calc(100% - 60px); /* Ocupa casi todo el ancho */
+                float: right; /* Mueve todas las tarjetas a la derecha */
+                padding: 15px; /* Menos padding */
+            }
+            
+            /* Flechas apuntando siempre a la izquierda (hacia la línea) */
+            .timeline > li .timeline-panel:before,
+            .timeline > li.timeline-inverted > .timeline-panel:before {
+                right: auto;
+                left: -18px; /* Colocar flecha en el borde izquierdo de la tarjeta */
+                border-left-width: 0;
+                border-right-width: 18px; /* Flecha apuntando a la izquierda */
+                border-left: 0;
+                border-right: 18px solid #fff;
+            }
+            
+            .timeline-panel h3 { font-size: 1.6rem; }
+            .timeline-panel p { font-size: 1.1rem; }
+            
+            /* Contador más pequeño en móvil */
+            .countdown { gap: 20px; }
+            .tiempo-caja span:first-child { font-size: 3rem; width: 90px; height: 90px; }
+        }
+
     </style>
 </head>
 <body>
