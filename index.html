@@ -14,6 +14,9 @@
 
     <style>
         /* --- ESTILOS GENERALES --- */
+        html {
+            overflow-x: hidden;
+        }
         body {
             margin: 0;
             padding-bottom: 150px;
@@ -602,15 +605,17 @@
 
             /* Línea de tiempo móvil: vertical y todo a la derecha */
             .timeline:before {
-                left: 20px; /* Línea movida a la izquierda */
+                left: 35px; /* Línea movida a la izquierda (centrada en 60px) */
+                margin-left: -2px; /* Centra la línea de 4px */
             }
 
             .timeline > li .timeline-badge {
-                left: 20px;
-                margin-left: -50px; /* Alineado a la línea */
-                width: 100px; /* Más pequeño */
-                height: 100px; /* Más pequeño */
-                line-height: 100px;
+                left: 35px; /* Centrado en 60px */
+                margin-left: -30px; /* Alineado a la línea (60px / 2) */
+                width: 60px; /* Más pequeño (para caber en 60px) */
+                height: 60px; /* Más pequeño */
+                line-height: 60px;
+                font-size: 1rem; /* Texto más pequeño */
                 top: 5px; /* Ajuste vertical */
             }
             
