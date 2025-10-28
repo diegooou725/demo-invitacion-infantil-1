@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&family=Poppins:wght@300;400;700&family=Raleway:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&family=Poppins:wght@300;400;700&family=Raleway:wght@300;400&display.swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 
@@ -74,8 +74,8 @@
             align-items: center;
             justify-content: center;
             min-height: 500px;
-            /* FIX: Se quita !important para evitar conflicto de capas */
-            background-color: transparent; 
+            /* FIX: Se restaura !important para anular el fondo de 'section' */
+            background-color: transparent !important; 
         }
 
         .hero-circle-container {
@@ -86,8 +86,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            /* FIX: Se quita !important */
-            background-color: transparent; 
+            background-color: transparent;
         }
 
         .hero-image {
@@ -97,7 +96,6 @@
             background-image: url('niña.png');
             background-size: cover;
             background-position: center;
-            /* FIX: Se eliminan background-color y filter para que la imagen se vea con color */
             border: 6px solid #fff;
             position: relative;
             z-index: 1; /* Detrás de la imagen "todos.png" */
@@ -618,37 +616,32 @@
 
             /* Línea de tiempo móvil: vertical y todo a la derecha */
             
-            /* FIX 1: Mover la línea a 30px */
             .timeline:before {
                 left: 30px; 
                 margin-left: -2px; 
             }
 
-            /* FIX 2: Aumentar espacio vertical */
             .timeline > li {
-                margin-bottom: 50px; /* Aumenta el espacio vertical entre tarjetas */
+                margin-bottom: 60px; /* FIX: Aumenta el espacio vertical */
             }
 
-            /* FIX 3: Centrar la insignia en la línea de 30px */
             .timeline > li .timeline-badge {
-                left: 30px; /* Centrado en 30px */
-                margin-left: -30px; /* (30px / 2) */
+                left: 30px; 
+                margin-left: -30px; 
                 width: 60px; 
                 height: 60px; 
                 line-height: 60px;
-                font-size: 1rem; 
+                font-size: 0.9rem; /* FIX: Reduce la fuente de la hora */ 
                 top: 5px; 
             }
             
-            /* FIX 4: Ajustar ancho del panel */
             .timeline > li .timeline-panel,
             .timeline > li.timeline-inverted > .timeline-panel {
-                width: calc(100% - 75px); /* 100% - 60px(insignia) - 15px(espacio) */
+                width: calc(100% - 75px); 
                 float: right; 
                 padding: 15px; 
             }
             
-            /* Flechas apuntando siempre a la izquierda (hacia la línea) */
             .timeline > li .timeline-panel:before,
             .timeline > li.timeline-inverted > .timeline-panel:before {
                 right: auto;
@@ -662,8 +655,8 @@
                 top: 26px; 
             }
             
-            .timeline-panel h3 { font-size: 1.6rem; }
-            .timeline-panel p { font-size: 1.1rem; }
+            .timeline-panel h3 { font-size: 1.4rem; } /* FIX: Reduce la fuente del título */
+            .timeline-panel p { font-size: 1rem; } /* FIX: Reduce la fuente del párrafo */
             
             /* Contador más pequeño en móvil */
             .countdown { gap: 20px; }
@@ -680,12 +673,12 @@
             <img src="todos.png" alt="Todos los personajes" class="hero-center-image">
         </div>
         <div class="hero-content">
-            <h1>ARIANA</h1>
+            <h1>ARIANNA</h1>
             <p class="subtitulo">
                 Espero que todos estén preparados y con muchas ganas de celebrar,
                 porque hoy es mi cumpleaños y voy a preparar una fiesta a la que están
                 invitados todos.
-            </p>
+            </I>
             <p class="subtitulo">¡Los espero!</p>
 
             <img src="alegriatristeza.png" alt="Alegría y Tristeza" class="hero-decorator-img">
@@ -902,4 +895,3 @@
     </script>
     </body>
 </html>
-
