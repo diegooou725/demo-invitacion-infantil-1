@@ -616,52 +616,50 @@
 
             .hero h1 { font-size: 4rem; }
 
-            /* Línea de tiempo móvil: vertical y todo a la derecha */
             
+            /* --- INICIO: NUEVO DISEÑO DE TIMELINE MÓVIL --- */
+            
+            /* 1. Ocultar la línea central en móvil */
             .timeline:before {
-                left: 30px; 
-                margin-left: -2px; 
+                display: none;
             }
 
-            /* FIX: Aumenta el espacio vertical entre tarjetas */
+            /* 2. Dar un espaciado simple a cada item */
             .timeline > li {
-                margin-bottom: 90px; 
+                margin-bottom: 40px; /* Espacio entre cada bloque */
             }
 
+            /* 3. Convertir la insignia de hora en un bloque normal centrado */
             .timeline > li .timeline-badge {
-                left: 30px; 
-                margin-left: -30px; 
-                width: 60px; 
-                height: 60px; 
-                line-height: 60px;
-                font-size: 0.9rem; 
-                top: 10px; /* Ajuste para dar más espacio arriba */
+                position: relative; /* Quitar posicionamiento absoluto */
+                left: auto;
+                top: auto;
+                margin: 0 auto 15px auto; /* Centrar y dar espacio abajo */
+                width: 110px; /* Tamaño original */
+                height: 110px;
+                line-height: 110px;
+                font-size: 1.6rem;
             }
             
-            /* FIX: Ajuste de ancho del panel para más espacio */
+            /* 4. Hacer que el panel ocupe todo el ancho */
             .timeline > li .timeline-panel,
             .timeline > li.timeline-inverted > .timeline-panel {
-                width: calc(100% - 90px); 
-                float: right; 
-                padding: 15px; 
+                width: 100%; 
+                float: none; /* Quitar float */
+                padding: 20px; 
             }
             
-            /* FIX: Ajuste de posición de la flecha */
+            /* 5. Ocultar las flechas del panel */
             .timeline > li .timeline-panel:before,
             .timeline > li.timeline-inverted > .timeline-panel:before {
-                right: auto;
-                left: -15px; 
-                border-left-width: 0;
-                border-right-width: 15px; 
-                border-left: 0;
-                border-right: 15px solid #fff;
-                border-top: 15px solid transparent;
-                border-bottom: 15px solid transparent;
-                top: 22px; /* Alineada con el texto más pequeño */
+                display: none;
             }
             
-            .timeline-panel h3 { font-size: 1.4rem; } 
-            .timeline-panel p { font-size: 1rem; } 
+            .timeline-panel h3 { font-size: 1.6rem; } /* Tamaños de fuente legibles */
+            .timeline-panel p { font-size: 1.1rem; } 
+            
+            /* --- FIN: NUEVO DISEÑO DE TIMELINE MÓVIL --- */
+            
             
             /* Contador más pequeño en móvil */
             .countdown { gap: 20px; }
@@ -678,8 +676,8 @@
                 </div>
             <img src="todos.png" alt="Todos los personajes" class="hero-center-image">
         </div>
-        <div class="hero-content">
-            <h1>ARIANA</h1>
+        <div classs="hero-content">
+            <h1>ARIANNA</h1>
             <p class="subtitulo">
                 Espero que todos estén preparados y con muchas ganas de celebrar,
                 porque hoy es mi cumpleaños y voy a preparar una fiesta a la que están
@@ -867,7 +865,7 @@
                 const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
 
                 if(diasEl) diasEl.innerText = dias.toString().padStart(2, '0');
-                if(horasEl) horasEl.innerText = horas.toString().padStart(2, 'Lo-0');
+                if(horasEl) horasEl.innerText = horas.toString().padStart(2, '0');
                 if(minutosEl) minutosEl.innerText = minutos.toString().padStart(2, '0');
                 if(segundosEl) segundosEl.innerText = segundos.toString().padStart(2, '0');
             }, 1000);
