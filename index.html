@@ -17,8 +17,9 @@
         body {
             margin: 0;
             padding-bottom: 150px;
+            /* FIX: Evita desbordamiento horizontal en móvil */
+            overflow-x: hidden; 
             
-            /* FIX: Fondo 2 visible y escalado al 100% del ancho */
             background-color: #0d1b3e; 
             background-image: url('fondo2.png');
             background-size: 100% auto; 
@@ -37,7 +38,6 @@
 
         section {
             padding: 50px 25px;
-            /* FIX: Opacidad muy baja para que se vea el fondo2.png */
             background-color: rgba(13, 27, 62, 0.05); 
             box-shadow: 0 0 20px rgba(0,0,0,0.3);
         }
@@ -83,12 +83,11 @@
             background-image: url('niña.png');
             background-size: cover;
             background-position: center;
-            /* FIX CRÍTICO: Aseguramos que no haya filtro ni color de fondo */
             background-color: transparent !important; 
             filter: none !important; 
             border: 6px solid #fff;
             position: relative;
-            z-index: 1; 
+            z-index: 1; /* Detrás de la imagen "todos.png" */
         }
         
         .hero-center-image {
@@ -327,7 +326,7 @@
         }
 
 
-        /* --- 5. SECCIÓN MINUTO A MINUTO (ADAPTACIÓN MÓVIL CORRECTA) --- */
+        /* --- 5. SECCIÓN MINUTO A MINUTO (FIX: Diseño Móvil) --- */
         .itinerario-seccion {
             padding: 60px 25px;
             margin-bottom: 120px;
@@ -359,7 +358,7 @@
             position: absolute;
             top: 0;
             bottom: 0;
-            left: 50%;
+            left: 50%; 
             width: 4px;
             margin-left: -2px;
             background-color: #d9534f;
@@ -505,7 +504,6 @@
         }
 
         #sticky-footer {
-            /* FIX: Footer fijo y visible */
             position: fixed;
             bottom: 0;
             left: 0;
@@ -518,7 +516,6 @@
             transform: translateY(0); 
             pointer-events: auto;
             
-            /* Estilo */
             display: flex;
             flex-direction: column; 
             justify-content: center; 
