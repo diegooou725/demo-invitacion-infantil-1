@@ -98,8 +98,6 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%); 
-            /* FIX: Garantiza que no exceda el ancho de la pantalla */
-            max-width: 100vw; 
         }
 
         .hero-content {
@@ -328,7 +326,7 @@
         }
 
 
-        /* --- 5. SECCIÓN MINUTO A MINUTO (FIX: Diseño Móvil) --- */
+        /* --- 5. SECCIÓN MINUTO A MINUTO (ADAPTACIÓN MÓVIL CORRECTA) --- */
         .itinerario-seccion {
             padding: 60px 25px;
             margin-bottom: 120px;
@@ -506,6 +504,7 @@
         }
 
         #sticky-footer {
+            /* FIX: Footer fijo y visible */
             position: fixed;
             bottom: 0;
             left: 0;
@@ -518,6 +517,7 @@
             transform: translateY(0); 
             pointer-events: auto;
             
+            /* Estilo */
             display: flex;
             flex-direction: column; 
             justify-content: center; 
@@ -528,6 +528,7 @@
         }
 
         .footer-text {
+            /* FIX: Fuente, tamaño y peso exacto de la referencia */
             font-family: 'Raleway', sans-serif; 
             font-weight: 300; 
             font-size: 0.75rem; 
@@ -542,6 +543,7 @@
         }
         
         .whatsapp-button-footer {
+            /* FIX: Fuente, tamaño y padding exacto de la referencia */
             font-family: 'Raleway', sans-serif; 
             font-weight: 400; 
             font-size: 0.8rem;
@@ -561,10 +563,10 @@
         }
 
         .whatsapp-button-footer svg {
-             width: 14px; 
+             width: 14px; /* Tamaño del SVG de referencia */
              height: 14px;
              fill: var(--blanco);
-             margin-right: 6px; 
+             margin-right: 6px; /* Margen del SVG de referencia */
         }
         
         .whatsapp-button-footer:hover {
@@ -573,7 +575,7 @@
         }
         
         .footer-logo {
-             height: 35px; 
+             height: 35px; /* Altura solicitada de 35px */
              width: auto;
              vertical-align: middle;
              display: block;
@@ -585,23 +587,15 @@
              margin-right: 0;
         }
 
-        /* --- MEDIA QUERY PARA MÓVILES (Adaptación al 100% y Minuto a Minuto) --- */
+        /* --- MEDIA QUERY PARA MÓVILES (Adaptación Minuto a Minuto) --- */
         @media (max-width: 767px) {
             
-            /* FIX: Desactivar Parallax en móvil para rendimiento y estabilidad */
-            .contador-seccion,
-            .galeria-seccion {
-                background-attachment: scroll !important;
-            }
-
             .hero-circle-container {
                 width: 250px;
                 height: 250px;
             }
             .hero-center-image {
-                /* FIX: Ajuste más agresivo para evitar desbordamiento en móviles */
-                width: 100%; 
-                max-width: 300px; /* Se mantiene el límite para que no crezca demasiado */
+                width: 300px; 
             }
 
             .hero h1 { font-size: 4rem; }
@@ -613,17 +607,17 @@
 
             .timeline > li .timeline-badge {
                 left: 20px;
-                margin-left: -50px;
-                width: 100px;
-                height: 100px;
+                margin-left: -50px; /* Alineado a la línea */
+                width: 100px; /* Más pequeño */
+                height: 100px; /* Más pequeño */
                 line-height: 100px;
-                top: 5px;
+                top: 5px; /* Ajuste vertical */
             }
             
             /* Alinear todas las tarjetas a la derecha de la línea */
             .timeline > li .timeline-panel,
             .timeline > li.timeline-inverted > .timeline-panel {
-                width: calc(100% - 60px); /* Ocupa casi todo el ancho */
+                width: calc(100% - 60px); /* Ajuste de ancho */
                 float: right; /* Mueve todas las tarjetas a la derecha */
                 padding: 15px; /* Menos padding */
             }
@@ -632,11 +626,14 @@
             .timeline > li .timeline-panel:before,
             .timeline > li.timeline-inverted > .timeline-panel:before {
                 right: auto;
-                left: -18px; /* Colocar flecha en el borde izquierdo de la tarjeta */
+                left: -15px; /* Ajuste para coincidir con el tamaño de flecha */
                 border-left-width: 0;
-                border-right-width: 18px; /* Flecha apuntando a la izquierda */
+                border-right-width: 15px; /* Flecha apuntando a la izquierda */
                 border-left: 0;
-                border-right: 18px solid #fff;
+                border-right: 15px solid #fff;
+                border-top: 15px solid transparent;
+                border-bottom: 15px solid transparent;
+                top: 26px; /* Mismo que desktop */
             }
             
             .timeline-panel h3 { font-size: 1.6rem; }
@@ -654,7 +651,7 @@
     <section class="hero">
         <div class="hero-circle-container">
             <div class="hero-image"></div>
-            <img src="todos.png" alt="Todos los personajes" class="hero-center-image" width="380" height="380">
+            <img src="todos.png" alt="Todos los personajes" class="hero-center-image">
         </div>
         <div class="hero-content">
             <h1>ARIANNA</h1>
@@ -665,7 +662,7 @@
             </p>
             <p class="subtitulo">¡Los espero!</p>
 
-            <img src="alegriatristeza.png" alt="Alegría y Tristeza" class="hero-decorator-img" width="300" height="300">
+            <img src="alegriatristeza.png" alt="Alegría y Tristeza" class="hero-decorator-img">
         </div>
     </section>
 
@@ -705,7 +702,7 @@
     </section>
 
     <section class="decorator-img">
-        <img src="bing.png" alt="Bing Bong" loading="lazy" width="350" height="350">
+        <img src="bing.png" alt="Bing Bong">
     </section>
 
     <section class="galeria-seccion">
@@ -713,15 +710,15 @@
         <div class="swiper">
             <div class="swiper-wrapper">
 
-                <div class="swiper-slide"><img src="niña1.png" alt="Niña 1" loading="lazy" width="280" height="380"></div>
-                <div class="swiper-slide"><img src="niña2.png" alt="Niña 2" loading="lazy" width="280" height="380"></div>
-                <div class="swiper-slide"><img src="niña3.png" alt="Niña 3" loading="lazy" width="280" height="380"></div>
-                <div class="swiper-slide"><img src="niña1.png" alt="Niña 1" loading="lazy" width="280" height="380"></div>
-                <div class="swiper-slide"><img src="niña2.png" alt="Niña 2" loading="lazy" width="280" height="380"></div>
-                <div class="swiper-slide"><img src="niña3.png" alt="Niña 3" loading="lazy" width="280" height="380"></div>
-                <div class="swiper-slide"><img src="niña1.png" alt="Niña 1" loading="lazy" width="280" height="380"></div>
-                <div class="swiper-slide"><img src="niña2.png" alt="Niña 2" loading="lazy" width="280" height="380"></div>
-                <div class="swiper-slide"><img src="niña3.png" alt="Niña 3" loading="lazy" width="280" height="380"></div>
+                <div class="swiper-slide"><img src="niña1.png" alt="Niña 1"></div>
+                <div class="swiper-slide"><img src="niña2.png" alt="Niña 2"></div>
+                <div class="swiper-slide"><img src="niña3.png" alt="Niña 3"></div>
+                <div class="swiper-slide"><img src="niña1.png" alt="Niña 1"></div>
+                <div class="swiper-slide"><img src="niña2.png" alt="Niña 2"></div>
+                <div class="swiper-slide"><img src="niña3.png" alt="Niña 3"></div>
+                <div class="swiper-slide"><img src="niña1.png" alt="Niña 1"></div>
+                <div class="swiper-slide"><img src="niña2.png" alt="Niña 2"></div>
+                <div class="swiper-slide"><img src="niña3.png" alt="Niña 3"></div>
                 
             </div>
             <div class="swiper-pagination"></div>
@@ -803,7 +800,7 @@
     <div id="sticky-footer">
         <span class="footer-text">
             <a href="https://wa.me/524274270566?text=Quisiera%20mas%20informacion%20sobre%20las%20invitaciones%20digitales" target="_blank" class="logo-link">
-                 <img src="DigitalCore-blanco.png" alt="Logo de Digital Core" class="footer-logo" loading="lazy" width="100" height="35">
+                 <img src="DigitalCore-blanco.png" alt="Logo de Digital Core" class="footer-logo">
             </a>
             Invitación de prueba creada por Digital Core. Cotiza y solicita tu diseño aqui.
         </span>
