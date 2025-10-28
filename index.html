@@ -74,7 +74,8 @@
             align-items: center;
             justify-content: center;
             min-height: 500px;
-            background-color: transparent !important;
+            /* FIX: Se quita !important para evitar conflicto de capas */
+            background-color: transparent; 
         }
 
         .hero-circle-container {
@@ -85,7 +86,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: transparent !important;
+            /* FIX: Se quita !important */
+            background-color: transparent; 
         }
 
         .hero-image {
@@ -95,8 +97,7 @@
             background-image: url('niña.png');
             background-size: cover;
             background-position: center;
-            background-color: transparent !important; 
-            /* filter: none !important; <-- FIX: Esta línea causaba que la imagen se viera gris. Se elimina. */
+            /* FIX: Se eliminan background-color y filter para que la imagen se vea con color */
             border: 6px solid #fff;
             position: relative;
             z-index: 1; /* Detrás de la imagen "todos.png" */
@@ -493,7 +494,6 @@
             cursor: pointer;
             
             /* --- FIX BOTÓN --- */
-            /* min-width: 300px; */ 
             width: 100%; 
             max-width: 400px; 
         }
@@ -617,46 +617,49 @@
             .hero h1 { font-size: 4rem; }
 
             /* Línea de tiempo móvil: vertical y todo a la derecha */
+            
+            /* FIX 1: Mover la línea a 30px */
             .timeline:before {
-                left: 35px; /* Línea movida a la izquierda (centrada en 60px) */
-                margin-left: -2px; /* Centra la línea de 4px */
+                left: 30px; 
+                margin-left: -2px; 
             }
 
-            /* --- FIX: AUMENTAR ESPACIO VERTICAL --- */
+            /* FIX 2: Aumentar espacio vertical */
             .timeline > li {
-                margin-bottom: 70px; /* Aumenta el espacio vertical entre tarjetas */
+                margin-bottom: 50px; /* Aumenta el espacio vertical entre tarjetas */
             }
 
+            /* FIX 3: Centrar la insignia en la línea de 30px */
             .timeline > li .timeline-badge {
-                left: 35px; /* Centrado en 60px */
-                margin-left: -30px; /* Alineado a la línea (60px / 2) */
-                width: 60px; /* Más pequeño (para caber en 60px) */
-                height: 60px; /* Más pequeño */
+                left: 30px; /* Centrado en 30px */
+                margin-left: -30px; /* (30px / 2) */
+                width: 60px; 
+                height: 60px; 
                 line-height: 60px;
-                font-size: 1rem; /* Texto más pequeño */
-                top: 5px; /* Ajuste vertical */
+                font-size: 1rem; 
+                top: 5px; 
             }
             
-            /* Alinear todas las tarjetas a la derecha de la línea */
+            /* FIX 4: Ajustar ancho del panel */
             .timeline > li .timeline-panel,
             .timeline > li.timeline-inverted > .timeline-panel {
-                width: calc(100% - 60px); /* Ajuste de ancho */
-                float: right; /* Mueve todas las tarjetas a la derecha */
-                padding: 15px; /* Menos padding */
+                width: calc(100% - 75px); /* 100% - 60px(insignia) - 15px(espacio) */
+                float: right; 
+                padding: 15px; 
             }
             
             /* Flechas apuntando siempre a la izquierda (hacia la línea) */
             .timeline > li .timeline-panel:before,
             .timeline > li.timeline-inverted > .timeline-panel:before {
                 right: auto;
-                left: -15px; /* Ajuste para coincidir con el tamaño de flecha */
+                left: -15px; 
                 border-left-width: 0;
-                border-right-width: 15px; /* Flecha apuntando a la izquierda */
+                border-right-width: 15px; 
                 border-left: 0;
                 border-right: 15px solid #fff;
                 border-top: 15px solid transparent;
                 border-bottom: 15px solid transparent;
-                top: 26px; /* Mismo que desktop */
+                top: 26px; 
             }
             
             .timeline-panel h3 { font-size: 1.6rem; }
