@@ -13,10 +13,19 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 
     <style>
-        /* --- ESTILOS GENERALES --- */
+        /* --- FIX GLOBAL (Aprendido del archivo 'boda') --- */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
         html {
+            /* Asegura que no haya desbordamiento horizontal */
             overflow-x: hidden;
         }
+
+        /* --- ESTILOS GENERALES --- */
         body {
             margin: 0;
             padding-bottom: 150px;
@@ -482,7 +491,11 @@
             text-transform: uppercase;
             border: none;
             cursor: pointer;
-            min-width: 300px;
+            
+            /* --- FIX BOTÓN --- */
+            /* min-width: 300px; */ /* <-- ELIMINADO: Esto causaba el desbordamiento en móviles */
+            width: 100%; /* <-- AÑADIDO: Ocupa el ancho del contenedor */
+            max-width: 400px; /* <-- AÑADIDO: Límite para pantallas más grandes */
         }
 
         .boton-enviar:hover {
@@ -528,6 +541,8 @@
             flex-wrap: wrap; 
             gap: 0px; 
             box-shadow: 0 -2px 10px rgba(0,0,0,0.5); 
+            
+            /* El box-sizing: border-box; global arregla el desbordamiento de padding */
         }
 
         .footer-text {
@@ -604,6 +619,7 @@
             .hero h1 { font-size: 4rem; }
 
             /* Línea de tiempo móvil: vertical y todo a la derecha */
+            /* ESTA ES LA CORRECCIÓN ANTERIOR (MANTENIDA) */
             .timeline:before {
                 left: 35px; /* Línea movida a la izquierda (centrada en 60px) */
                 margin-left: -2px; /* Centra la línea de 4px */
