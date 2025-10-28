@@ -74,7 +74,7 @@
             align-items: center;
             justify-content: center;
             min-height: 500px;
-            /* FIX: Se restaura !important para anular el fondo de 'section' */
+            /* FIX DEFINITIVO: Se asegura que la sección hero no tenga ningún fondo */
             background-color: transparent !important; 
         }
 
@@ -86,7 +86,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: transparent;
+            /* FIX DEFINITIVO: Se asegura que el contenedor del círculo tampoco tenga fondo */
+            background-color: transparent; 
         }
 
         .hero-image {
@@ -621,8 +622,9 @@
                 margin-left: -2px; 
             }
 
+            /* FIX: Aumenta el espacio vertical entre tarjetas */
             .timeline > li {
-                margin-bottom: 60px; /* FIX: Aumenta el espacio vertical */
+                margin-bottom: 70px; 
             }
 
             .timeline > li .timeline-badge {
@@ -631,13 +633,14 @@
                 width: 60px; 
                 height: 60px; 
                 line-height: 60px;
-                font-size: 0.9rem; /* FIX: Reduce la fuente de la hora */ 
+                font-size: 0.9rem; 
                 top: 5px; 
             }
             
+            /* FIX: Ajuste de ancho del panel para más espacio a la izquierda */
             .timeline > li .timeline-panel,
             .timeline > li.timeline-inverted > .timeline-panel {
-                width: calc(100% - 75px); 
+                width: calc(100% - 90px); /* Más espacio a la izquierda para que no se pegue */
                 float: right; 
                 padding: 15px; 
             }
@@ -655,8 +658,8 @@
                 top: 26px; 
             }
             
-            .timeline-panel h3 { font-size: 1.4rem; } /* FIX: Reduce la fuente del título */
-            .timeline-panel p { font-size: 1rem; } /* FIX: Reduce la fuente del párrafo */
+            .timeline-panel h3 { font-size: 1.4rem; } 
+            .timeline-panel p { font-size: 1rem; } 
             
             /* Contador más pequeño en móvil */
             .countdown { gap: 20px; }
@@ -673,12 +676,12 @@
             <img src="todos.png" alt="Todos los personajes" class="hero-center-image">
         </div>
         <div class="hero-content">
-            <h1>ARIANNA</h1>
+            <h1>ARIANA</h1>
             <p class="subtitulo">
                 Espero que todos estén preparados y con muchas ganas de celebrar,
                 porque hoy es mi cumpleaños y voy a preparar una fiesta a la que están
                 invitados todos.
-            </I>
+            </p>
             <p class="subtitulo">¡Los espero!</p>
 
             <img src="alegriatristeza.png" alt="Alegría y Tristeza" class="hero-decorator-img">
